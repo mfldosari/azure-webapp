@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM Note</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { background: #f7f7fb; font-family: 'Segoe UI', sans-serif; }
+        .form-container { max-width: 400px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17); padding: 40px 30px; }
+        h2 { color: #6e8efb; }
+        textarea { width: 90%; padding: 10px; margin: 10px 0; border-radius: 8px; border: 1px solid #a777e3; font-size: 1em; min-height: 80px; }
+        .fancy-btn { background: linear-gradient(90deg, #6e8efb, #a777e3); color: white; border: none; border-radius: 30px; padding: 10px 28px; font-size: 1.1em; cursor: pointer; margin-top: 10px; }
+        .fancy-btn:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div class="form-container animate__animated animate__fadeInDown">
+        <h2>Add Note for {{ contact.name }}</h2>
+        <form method="post">
+            <textarea name="note" placeholder="Enter note..." required></textarea><br>
+            <button class="fancy-btn" type="submit">Save Note</button>
+        </form>
+        <a href="/crm" class="fancy-btn">Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter - Fancy Azure Web App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { background: #f7f7fb; font-family: 'Segoe UI', sans-serif; }
+        .counter-container {
+            max-width: 400px;
+            margin: 80px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        h2 { color: #6e8efb; }
+        .count {
+            font-size: 2.5em;
+            color: #a777e3;
+            margin: 20px 0;
+        }
+        .fancy-btn {
+            background: linear-gradient(90deg, #6e8efb, #a777e3);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 32px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        .fancy-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="counter-container animate__animated animate__fadeInDown">
+        <h2>Counter</h2>
+        <div class="count">{{ count }}</div>
+        <form method="post" style="display:inline;">
+            <button class="fancy-btn" type="submit">Increment</button>
+        </form>
+        <a href="/reset-counter" class="fancy-btn">Reset</a>
+    </div>
+</body>
+</html>

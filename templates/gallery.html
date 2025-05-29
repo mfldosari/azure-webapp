@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery - Fancy Azure Web App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { background: #f7f7fb; font-family: 'Segoe UI', sans-serif; }
+        .gallery-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        h2 { color: #6e8efb; }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            border-radius: 12px;
+            box-shadow: 0 4px 14px 0 rgba(110, 142, 251, 0.2);
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.2s;
+        }
+        .gallery img:hover {
+            transform: scale(1.08) rotate(-2deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container animate__animated animate__fadeInDown">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            {% for img in images %}
+                <img src="{{ img }}" alt="Random image {{ loop.index }}" class="animate__animated animate__zoomIn">
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
