@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { background: #f7f7fb; font-family: 'Segoe UI', sans-serif; }
+        .crm-container { max-width: 900px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17); padding: 40px 30px; }
+        h2 { color: #6e8efb; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+        th, td { padding: 10px; border-bottom: 1px solid #eee; text-align: left; }
+        th { background: #f0f4ff; }
+        .fancy-btn { background: linear-gradient(90deg, #6e8efb, #a777e3); color: white; border: none; border-radius: 30px; padding: 8px 20px; font-size: 1em; cursor: pointer; margin: 2px; }
+        .fancy-btn:hover { transform: scale(1.05); }
+        .section-title { margin-top: 40px; color: #a777e3; }
+        .note-link { color: #6e8efb; text-decoration: underline; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="crm-container animate__animated animate__fadeInDown">
+        <h2>CRM Dashboard</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <div class="section-title">Contacts <a href="/crm/contact/new" class="fancy-btn">+ Add Contact</a></div>
+        <table>
+            <tr><th>Name</th><th>Email</th><th>Phone</th><th>Created</th><th>Actions</th></tr>
+            {% for c in contacts %}
+            <tr>
+                <td>{{ c.name }}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.phone }}</td>
+                <td>{{ c.created }}</td>
+                <td>
+                    <a href="/crm/contact/{{ c.id }}" class="fancy-btn">Edit</a>
+                    <a href="/crm/contact/delete/{{ c.id }}" class="fancy-btn">Delete</a>
+                    <a href="/crm/note/new/{{ c.id }}" class="fancy-btn">+ Note</a>
+                    <a href="/crm/notes/{{ c.id }}" class="note-link">Notes</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="section-title">Deals <a href="/crm/deal/new" class="fancy-btn">+ Add Deal</a></div>
+        <table>
+            <tr><th>Title</th><th>Value</th><th>Contact</th><th>Created</th><th>Actions</th></tr>
+            {% for d in deals %}
+            <tr>
+                <td>{{ d.title }}</td>
+                <td>{{ d.value }}</td>
+                <td>{% for c in contacts %}{% if c.id == d.contact_id %}{{ c.name }}{% endif %}{% endfor %}</td>
+                <td>{{ d.created }}</td>
+                <td>
+                    <a href="/crm/deal/{{ d.id }}" class="fancy-btn">Edit</a>
+                    <a href="/crm/deal/delete/{{ d.id }}" class="fancy-btn">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/" class="fancy-btn">Back to Home</a>
+    </div>
+</body>
+</html>

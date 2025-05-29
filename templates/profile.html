@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile - Fancy Azure Web App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { background: #f7f7fb; font-family: 'Segoe UI', sans-serif; }
+        .profile-container {
+            max-width: 400px;
+            margin: 80px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        h2 { color: #6e8efb; }
+        .username {
+            font-size: 1.5em;
+            color: #a777e3;
+            margin: 20px 0;
+        }
+        .joined {
+            color: #888;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container animate__animated animate__fadeInDown">
+        <h2>Profile</h2>
+        <div class="username">{{ username }}</div>
+        <div class="joined">Joined: {{ joined }}</div>
+    </div>
+</body>
+</html>
